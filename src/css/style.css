@@ -1,0 +1,38 @@
+.logo {
+	margin-left: 1%;
+}
+
+html {
+	background-color: #00CC66; 
+}
+
+body {
+  height: 100%;
+  background: inherit;
+  color: #ffffff;
+  font: 300 16px/22px "Roboto", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+
+#poll-box {
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	
+	margin-top: 5%;
+	padding: 10px 10px;
+}
+
+.box-title {
+	font-style: bold;
+}
+
+.btn-proceed {
+	color: #000000;
+}
+
+.list-group {
+	color: #000000;
+}
