@@ -32,27 +32,24 @@ contract VotingApp {
 		require(voting.expiresIn >= 1 days);	
 		votingIdToVoting[votingsCount] = voting;
 		votingsCount++;
-		// StartVoting(_name, _text, _expiresIn, msg.sender);
 	}
 
 	function vote(bool _vote, uint _votingId) public votingExists(_votingId) {
-		// require(_votingId <= votingsCount);
 		Voting storage _voting = votingIdToVoting[_votingId];
 		require(_voting.active == true);
-		require(_voting.startTime + now <= _voting.startTime + _voting.expiresIn);
-		votingIdToVoting[_votingId].voterToVote[msg.sender] = _vote;
-		votingIdToVoting[_votingId].voters.push(msg.sender);
-		// Vote(_vote, _votingId);
+		require(now - _voting.startTime <= _voting.startTime + _voting.expiresIn);
+		_voting.voterToVote[msg.sender] = _vote;
+		_voting.voters.push(msg.sender);
+		_voting.votesCount++;
+
 	}
 
 	function getResults(uint _votingId) public view votingExists(_votingId) returns (uint, uint) {
-		// require(_votingId <= votingsCount);
 		Voting storage _voting = votingIdToVoting[_votingId];
 		uint yesCount = 0;
 		for (uint i = 0; i < _voting.voters.length; i++) {
 			if (votingIdToVoting[_votingId].voterToVote[_voting.voters[i]] == true) yesCount++;
 		}
-		// GetResults(_votingId, yesCount, _voting.voters.length - yesCount);
 		return (yesCount, _voting.voters.length - yesCount);
 	} 
 }

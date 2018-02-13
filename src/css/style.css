@@ -13,16 +13,13 @@ body {
   font: 300 16px/22px "Roboto", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+nav {
+	display: block;
+}
 
-
-#poll-box {
-	border-radius: 10px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: black;
-	
+#poll-box {	
 	margin-top: 5%;
-	padding: 10px 10px;
+	padding: 20px 20px 10px 10px;
 }
 
 .box-title {
@@ -33,6 +30,14 @@ body {
 	color: #000000;
 }
 
+.results {
+	margin: 1% 1%;
+}
+
 .list-group {
 	color: #000000;
+}
+
+.button {
+	color: black;
 }

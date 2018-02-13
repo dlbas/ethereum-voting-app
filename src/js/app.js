@@ -37,7 +37,10 @@ App = {
 
     bindEvents: function() {
     	console.log('bindEvents');
-    	$(document).on('click', '.btn-proceed', App.pushVoting);
+        $(document).on('click', '.btn-proceed', App.pushVoting);
+        // $(document).ready(() => App.showVotingInfo(1));
+        $(document).on('click', '.btn-vote', App.vote);
+        $(document).on('click', '.btn-voting-info', App.showVotingInfo);
     },
 
     pushVoting: function () {
@@ -70,7 +73,7 @@ App = {
     	return [title, text, duration.split(' ')[0]];
     },
 
-    vote: function (votingId, voteValue) {
+    vote: function () {
     	console.log('vote');
     	var votingAppInstance;
     	App.contracts.VotingApp.deployed().then(function (instance) {
@@ -81,7 +84,10 @@ App = {
     				console.log(err);
     			}
     			account = accounts[0];
-    		})
+    		});
+            let votingId = +$('#voting-id').val();
+            let voteValue = $('#sel-vote').val() == 'true';
+            console.log(votingId, voteValue);
     		return votingAppInstance.vote(voteValue, votingId, {
     			from: account
     		});
@@ -90,14 +96,14 @@ App = {
     	})
     },
 
-    getVotingsCount: function (callback) {
-    	App.contracts.VotingApp.deployed().then(function (instance) {
-    		return instance.votingsCount();
-    	}).then(function (response) {
-    		return callback(response.c[0]);
-    	}).catch(function (error) {
-    		console.log(error);
-    	});
+    getVotingsCount: function () {
+        return App.contracts.VotingApp.deployed().then((instance) => {
+            return instance.votingsCount();
+        }).then((response) => {
+            return new Promise((resolve) => {
+                resolve(response.c[0]);
+            });
+        }).catch((error) => {console.log(error)});
     },
 
     getVoting: function (votingId) {
@@ -122,13 +128,15 @@ App = {
 		    }).catch(error => console.log(error));
     },
 
-    showVotingInfo: function (votingId) {
+    showVotingInfo: function () {
+        let votingId = +$('#info-voting-id').val();
+        console.log(votingId);
     	App.getVoting(votingId).then((obj) => {
     		for (var prop in obj) {
     			$('.list-group').append(`<li class="list-group-item">${obj[prop]}</li>`);
-    			console.log(obj[prop]);
+    			// console.log(obj[prop]);
     		}
-    	})
+    	});
     }
 };
 

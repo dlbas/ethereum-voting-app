@@ -11,18 +11,14 @@
 </head>
 
 <body>
-    <header class="row container" id="page-header">
-        <div class="logo">
-            <h1>VotingApp</h1>
-        </div>
-    </header>
+    <h1 class="text-center">NADIN TRUBOCHKINA ПРЕДСТАВЛЯЕТ...</h1>
     <section class="container">
         <div class="row">
             <!-- POLL BOX -->
-            <div id="poll-box" class="container col-xs-6 col-xs-push-3 col-sm-6 col-sm-push-3">
+            <div id="poll-box" class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
                 <div class="row box-title">
                     <div class="col-sm-6 col-sm-push-3">
-                        <h2 class="text-center">Box header</h2>
+                        <h2 class="text-center">Push to network</h2>
                     </div>
                 </div>
                 <div id="input-template">
@@ -47,17 +43,48 @@
                             <option>7 days</option>
                         </select>
                     </div>
-                    <button class="btn-block btn-proceed">Proceed</button>
+                    <button class="button btn-block btn-proceed">Proceed</button>
+                </div>
+            </div>
+            <div id="poll-box" class="col-sm-12 col-xs-12 col-md-5 col-lg-5">
+                <div class="row box-title">
+                    <div class="col-sm-6 col-sm-push-3">
+                        <h2 class="text-center">Actually vote</h2>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-6">
+                        <label for="sel-vote">Vote:</label>
+                        <select class="form-control" id="sel-vote">
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="voting-id">Voting id:</label>
+                        <input type="text" class="form-control" id="voting-id">
+                    </div>
+                    <div class="col-md-12 col-md-push">
+                        <button class="button btn-block btn-vote">Vote!</button>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <ul class="list-group">
-                
-            </ul>
+            <div id="poll-box" class="col-md-10 col-md-push-1">
+                <div class="row box-title">
+                    <h2 class="text-center">Actually info</h2>
+                </div>
+                <div class="form-group">
+                    <label for="info-voting-id">Voting id:</label>
+                    <input type="text" class="form-control" id="info-voting-id">
+                    <button class="button btn-block btn-voting-info">Show</button>
+                </div>
+                <div class="list-group"></div>
+            </div>
         </div>
     </section>
-    <footer class="container">
+    <footer class="container-fluid">
         Some copyright info or perhaps some author info for an &lt;article&gt;?
     </footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -66,7 +93,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/web3.min.js"></script>
     <script src="js/truffle-contract.js"></script>
-    <script src="js/page.js"></script>
     <script src="js/app.js"></script>
 </body>
 
