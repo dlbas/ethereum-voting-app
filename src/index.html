@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <h1 class="text-center">NADIN TRUBOCHKINA ПРЕДСТАВЛЯЕТ...</h1>
+    <h1 class="text-center">Voting App</h1>
     <section class="container">
         <div class="row">
             <!-- POLL BOX -->
@@ -43,7 +43,7 @@
                             <option>7 days</option>
                         </select>
                     </div>
-                    <button class="button btn-block btn-proceed">Proceed</button>
+                    <button class="button btn-primary btn-block btn-proceed">Proceed</button>
                 </div>
             </div>
             <div id="poll-box" class="col-sm-12 col-xs-12 col-md-5 col-lg-5">
@@ -64,22 +64,31 @@
                         <label for="voting-id">Voting id:</label>
                         <input type="text" class="form-control" id="voting-id">
                     </div>
+                </div>
+                <div class="form-group row">
                     <div class="col-md-12 col-md-push">
-                        <button class="button btn-block btn-vote">Vote!</button>
+                        <button class="button btn-primary btn-block btn-vote">Vote!</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="votings-counter">Votings total:</label>
+                        <div id="votings-counter"></div>
+                        <button class="btn btn-primary btn-refresh">Refresh</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div id="poll-box" class="col-md-10 col-md-push-1">
-                <div class="row box-title">
+                <div class="box-title">
                     <h2 class="text-center">Actually info</h2>
                 </div>
                 <div class="form-group">
                     <label for="info-voting-id">Voting id:</label>
                     <input type="text" class="form-control" id="info-voting-id">
-                    <button class="button btn-block btn-voting-info">Show</button>
                 </div>
+                <button class="button btn-block btn-voting-info">Show</button>
                 <div class="list-group"></div>
             </div>
         </div>

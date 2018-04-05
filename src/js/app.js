@@ -38,9 +38,10 @@ App = {
     bindEvents: function() {
     	console.log('bindEvents');
         $(document).on('click', '.btn-proceed', App.pushVoting);
-        // $(document).ready(() => App.showVotingInfo(1));
+        $(document).on('click', '.btn-refresh', App.showLastVotingId);
         $(document).on('click', '.btn-vote', App.vote);
         $(document).on('click', '.btn-voting-info', App.showVotingInfo);
+
     },
 
     pushVoting: function () {
@@ -57,13 +58,13 @@ App = {
     				console.log(err);
     			}
     			account = accounts[0];
-    		})
+    		});
     		return votingAppInstance.startVoting(forms[0], forms[1], +forms[2], {
     			from: account
     		});
     	}).catch(function (err) {
     		console.log(err);
-    	})
+    	});
     },
 
     getForms: function () {
@@ -131,11 +132,25 @@ App = {
     showVotingInfo: function () {
         let votingId = +$('#info-voting-id').val();
         console.log(votingId);
+        $('.list-group').empty();
     	App.getVoting(votingId).then((obj) => {
     		for (var prop in obj) {
     			$('.list-group').append(`<li class="list-group-item">${obj[prop]}</li>`);
-    			// console.log(obj[prop]);
     		}
+    	});
+    },
+
+    getLastVotingId: function () {
+    	return App.contracts.VotingApp.deployed().then((instance) => {
+    		return instance.votingsCount();
+    	}).then((response) => {
+    		return Promise.resolve(response.c[0]);
+    	});
+    },
+
+    showLastVotingId: function () {
+    	App.getLastVotingId().then((resp) => {
+    		$('#votings-counter').text(resp);
     	});
     }
 };
