@@ -137,6 +137,7 @@ contract VotingApp is Ownable {
 		else {
 		    _voting.noCount++;
 		}
+		_voting.hasVoted[msg.sender] = true;
 	}
 
 	function getResults(uint _votingId)
