@@ -128,13 +128,13 @@ App = {
     	}).then(function (response) {
 		    	return new Promise((resolve, reject) => {
 			    	var votingObject = {
-			    		name: response[0],
-			    		text: response[1],
-			    		expiresIn: response[2].c[0],
-			    		startTime: response[3].c[0],
-			    		yesCount: response[4].c[0],
-                        noCount: response[5].c[0],
-			    		initiator: response[5]
+                        name: 'Name: ' + response[0],
+			    		text: 'Text: ' + response[1],
+			    		expiresIn: 'Expires in: ' + response[2].toNumber() / 3600 + ' hours',
+			    		startTime: 'Started at: ' + new Date(response[3].toNumber() * 1000),
+			    		yesCount: 'Yes count: ' + response[4].toNumber(),
+                        noCount: 'No count: ' + response[5].toNumber(),
+			    		initiator: 'Initiator: ' + response[6]
 			    	};
 			    	if (votingObject.initiator === '0x0000000000000000000000000000000000000000') {
 			    		reject(new Error('No such voting. Check your votingId'));
